@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   standalone: true,
-  imports: [],
+  imports: [RouterOutlet, RouterLink],
   selector: 'cours-web-mobile-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {}
+export class AppComponent {
+  public loginRoute = 'login';
+}
