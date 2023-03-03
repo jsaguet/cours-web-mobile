@@ -8,5 +8,8 @@
     </div>
 </div>
 
-<p>Liked jokes:</p>
-<app-joke *ngFor="let joke of likedJokes$ | async" [joke]="joke"></app-joke>
+<div id="liked-jokes">
+    <p>Liked jokes:</p>
+    <app-joke *ngFor="let joke of likedJokes$ | async" [joke]="joke"></app-joke>
+</div>
+
