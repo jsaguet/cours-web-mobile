@@ -1,6 +1,13 @@
 <div *ngIf="joke$ | async as joke">
-    <p>{{ joke.setup }}</p>
+    <app-joke [joke]="joke"></app-joke>
 
-    <p>{{ joke.delivery }}</p>
+    <div>
+        <button (click)="jokeLiked(joke)">Like</button>
+        &nbsp;
+        <button (click)="nextJoke()">Next</button>
+    </div>
 </div>
+
+<p>Liked jokes:</p>
+<app-joke *ngFor="let joke of likedJokes$ | async" [joke]="joke"></app-joke>
 

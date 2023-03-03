@@ -1,10 +1,16 @@
 {
   "root": true,
-  "ignorePatterns": ["!**/*"],
-  "plugins": ["@nrwl/nx"],
+  "ignorePatterns": [
+    "!**/*"
+  ],
+  "plugins": [
+    "@nrwl/nx"
+  ],
   "overrides": [
     {
-      "files": ["*.ts"],
+      "files": [
+        "*.ts"
+      ],
       "extends": [
         "plugin:@nrwl/nx/typescript",
         "plugin:@nrwl/nx/angular",
@@ -15,7 +21,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "coursWebMobile",
+            "prefix": "app",
             "style": "camelCase"
           }
         ],
@@ -23,15 +29,19 @@
           "error",
           {
             "type": "element",
-            "prefix": "cours-web-mobile",
+            "prefix": "app",
             "style": "kebab-case"
           }
         ]
       }
     },
     {
-      "files": ["*.html"],
-      "extends": ["plugin:@nrwl/nx/angular-template"],
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@nrwl/nx/angular-template"
+      ],
       "rules": {}
     }
   ]
