@@ -1,1 +1,6 @@
-<p>Root App Component</p>
+<ng-container *ngIf="counter$ | async as counter">
+    <p>La valeur du compteur est: {{ counter }}</p>
+
+    <button (click)="emitValue(counter)">Changer la valeur</button>
+</ng-container>
+
