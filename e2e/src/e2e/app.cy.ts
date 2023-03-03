@@ -1,13 +1,27 @@
-import { getGreeting } from '../support/app.po';
-
 describe('cours-web-mobile', () => {
   beforeEach(() => cy.visit('/'));
 
-  it('should display welcome message', () => {
-    // Custom command example, see `../support/commands.ts` file
-    cy.login('my-email@something.com', 'myPassword');
+  it('should display "Next" button', () => {
+    cy.get('#next').contains('Next');
+  });
 
-    // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome cours-web-mobile');
+  it('should display "Like" button', () => {
+    cy.get('#like').contains('Like');
+  });
+
+  it('should display liked joke', () => {
+    cy.get('#liked-jokes > app-joke').should('have.length', 0);
+
+    cy.get('#like').click();
+
+    cy.get('#liked-jokes > app-joke').should('have.length', 1);
+  });
+
+  it('should display liked joke', () => {
+    cy.get('#liked-jokes > app-joke').should('have.length', 0);
+
+    cy.get('#like').click();
+
+    cy.get('#liked-jokes > app-joke').should('have.length', 1);
   });
 });
