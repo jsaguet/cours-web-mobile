@@ -1,0 +1,12 @@
+<div *ngIf="joke$ | async as joke">
+    <app-joke [joke]="joke"></app-joke>
+
+    <div>
+        <button (click)="jokeLiked(joke)" id="like">Like</button>
+        &nbsp;
+        <button (click)="nextJoke()" id="next">Next</button>
+    </div>
+</div>
+
+<p>Liked jokes:</p>
+<app-joke *ngFor="let joke of likedJokes$ | async" [joke]="joke"></app-joke>

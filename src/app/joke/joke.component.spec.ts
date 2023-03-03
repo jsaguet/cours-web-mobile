@@ -13,6 +13,9 @@ describe('JokeComponent', () => {
 
     fixture = TestBed.createComponent(JokeComponent);
     component = fixture.componentInstance;
+
+    component.joke = { setup: '', delivery: '' };
+
     fixture.detectChanges();
   });
 
