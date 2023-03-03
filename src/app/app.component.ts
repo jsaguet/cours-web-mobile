@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AppService } from './app.service';
-import { Observable } from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
 
 @Component({
@@ -11,11 +10,7 @@ import { AsyncPipe, NgIf } from '@angular/common';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  counter$: Observable<number> = this.appService.counter$;
+  joke$ = this.appService.getJoke();
 
   constructor(private readonly appService: AppService) {}
-
-  emitValue(value: number): void {
-    this.appService.emitNewCounterValue(value + 1);
-  }
 }

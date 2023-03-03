@@ -1,6 +1,6 @@
-<ng-container *ngIf="counter$ | async as counter">
-    <p>La valeur du compteur est: {{ counter }}</p>
+<div *ngIf="joke$ | async as joke">
+    <p>{{ joke.setup }}</p>
 
-    <button (click)="emitValue(counter)">Changer la valeur</button>
-</ng-container>
+    <p>{{ joke.delivery }}</p>
+</div>
 
