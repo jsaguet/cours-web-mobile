@@ -66,10 +66,10 @@ bootstrapApplication(AppComponent, {
                 registrationStrategy: 'registerWhenStable:30000',
             })
         ),
-        importProvidersFrom(provideFirebaseApp(() => initializeApp(environment.firebase))),
-        importProvidersFrom(provideAuth(() => getAuth())),
-        importProvidersFrom(provideFirestore(() => getFirestore())),
-        importProvidersFrom(provideStorage(() => getStorage())),
+        importProvidersFrom(AngularFireModule.initializeApp(environment.firebase)),
+        importProvidersFrom(AngularFireAuthModule),
+        importProvidersFrom(AngularFirestoreModule),
+        importProvidersFrom(AngularFireStorageModule),
     ],
 }).catch((err) => console.error(err));
 ```
