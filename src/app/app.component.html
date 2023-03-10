@@ -1,1 +1,4 @@
-<p>Root App Component</p>
+<div *ngFor="let client of clients$ | async">
+    Prénom: {{ client.firstname }}<br>
+    Nom: {{ client.lastname }}
+</div>
