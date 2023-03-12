@@ -1,1 +1,8 @@
-<p>Root App Component</p>
+<h1>Popular Movies</h1>
+<button (click)="nextPage()">Next page</button>
+
+<div *ngFor="let movie of movies$ | async">
+    <h2>{{ movie.original_title }}</h2>
+    <h3>Genres:</h3>
+    <div *ngFor="let genre of movie.genres">{{ genre }}</div>
+</div>
