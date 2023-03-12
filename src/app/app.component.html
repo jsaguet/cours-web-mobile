@@ -4,5 +4,5 @@
 <div *ngFor="let movie of movies$ | async">
     <h2>{{ movie.original_title }}</h2>
     <h3>Genres:</h3>
-    <div *ngFor="let genre of movie.genres">{{ genre }}</div>
+    <div *ngFor="let genre of movie.genres">{{ getGenre(genre) | async }}</div>
 </div>

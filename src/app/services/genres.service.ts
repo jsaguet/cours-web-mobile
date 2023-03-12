@@ -17,4 +17,10 @@ export class GenresService {
       )
     );
   }
+
+  public getGenresById(id: number): Observable<string> {
+    return this.getGenres().pipe(
+      map((genres: Record<number, string>) => genres[id])
+    );
+  }
 }
