@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "cours-web-mobile-3f37e": {
+      "hosting": {
+        "cours-web-mobile": [
+          "cours-web-mobile-jst"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "cours-web-mobile-3f37e"
+  }
+}
