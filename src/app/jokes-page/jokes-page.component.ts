@@ -1,7 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Joke, JokeService } from '../joke.service';
+import { Joke } from '../joke.service';
 import { JokeComponent } from '../joke/joke.component';
+import { Store } from '@ngrx/store';
+import { viewModel } from '../state/jokes.selectors';
+import {
+  applicationStarted,
+  jokeLiked,
+  nextClicked,
+  showDelivery,
+} from '../state/jokes.actions';
 
 @Component({
   selector: 'app-page',
@@ -10,18 +18,24 @@ import { JokeComponent } from '../joke/joke.component';
   templateUrl: './jokes-page.component.html',
   styleUrls: ['./jokes-page.component.scss'],
 })
-export class JokesPageComponent {
-  public readonly joke$ = this.jokeService.joke$;
+export class JokesPageComponent implements OnInit {
+  public readonly viewModel$ = this.store.select(viewModel);
 
-  public readonly likedJokes$ = this.jokeService.likedJokes$;
+  constructor(private readonly store: Store) {}
 
-  constructor(private readonly jokeService: JokeService) {}
+  ngOnInit() {
+    this.store.dispatch(applicationStarted());
+  }
 
   public nextJoke(): void {
-    this.jokeService.nextJoke();
+    this.store.dispatch(nextClicked());
+  }
+
+  public showDelivery(): void {
+    this.store.dispatch(showDelivery());
   }
 
   public jokeLiked(joke: Joke): void {
-    this.jokeService.jokeLiked(joke);
+    this.store.dispatch(jokeLiked({ joke }));
   }
 }

@@ -8,9 +8,18 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { provideHttpClient } from '@angular/common/http';
+import { provideState, provideStore } from '@ngrx/store';
+import { featureKey, jokesReducer } from './app/state/jokes.reducer';
+import { provideEffects } from '@ngrx/effects';
+import { JokesEffects } from './app/state/jokes.effects';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 bootstrapApplication(AppComponent, {
   providers: [
+    provideStore(),
+    provideState(featureKey, jokesReducer),
+    provideEffects(JokesEffects),
+    provideStoreDevtools(),
     provideHttpClient(),
     importProvidersFrom(
       ServiceWorkerModule.register('ngsw-worker.js', {

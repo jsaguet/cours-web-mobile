@@ -1,5 +1,5 @@
 <div class="card">
-    <p>{{ joke.setup }}</p>
+  <p><strong>{{ joke.setup }}</strong></p>
 
-    <p>{{ joke.delivery }}</p>
+  <p *ngIf="showDelivery"><em>> {{ joke.delivery }}</em></p>
 </div>

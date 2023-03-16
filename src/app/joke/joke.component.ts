@@ -11,4 +11,5 @@ import { Joke } from '../joke.service';
 })
 export class JokeComponent {
   @Input() public joke!: Joke;
+  @Input() public showDelivery = true;
 }
