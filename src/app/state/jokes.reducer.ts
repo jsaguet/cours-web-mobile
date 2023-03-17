@@ -5,6 +5,7 @@ import {
   jokesFetchedSuccessfully,
   showDelivery,
 } from './jokes.actions';
+import produce from 'immer';
 
 export const featureKey = 'jokes';
 
@@ -22,17 +23,24 @@ export const jokesInitialState: JokesState = {
 
 export const jokesReducer = createReducer(
   jokesInitialState,
-  on(jokeLiked, (state, { joke }) => ({
-    ...state,
-    likedJokes: [joke, ...state.likedJokes],
-  })),
-  on(jokesFetchedSuccessfully, (state, { joke }) => ({
-    ...state,
-    displayedJoke: joke,
-    showDelivery: false,
-  })),
-  on(showDelivery, (state) => ({
-    ...state,
-    showDelivery: true,
-  }))
+  on(
+    jokeLiked,
+    produce((state, { joke }) => {
+      state.likedJokes = [joke, ...state.likedJokes];
+    })
+  ),
+  on(
+    jokesFetchedSuccessfully,
+    jokeLiked,
+    produce((draftState, { joke }) => {
+      draftState.displayedJoke = joke;
+      draftState.showDelivery = false;
+    })
+  ),
+  on(
+    showDelivery,
+    produce((state) => {
+      state.showDelivery = true;
+    })
+  )
 );
