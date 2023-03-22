@@ -13,9 +13,12 @@ import { featureKey, jokesReducer } from './app/state/jokes.reducer';
 import { provideEffects } from '@ngrx/effects';
 import { JokesEffects } from './app/state/jokes.effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { provideRouter } from '@angular/router';
+import { appRoutes } from './app/app.routes';
 
 bootstrapApplication(AppComponent, {
   providers: [
+    provideRouter(appRoutes),
     provideStore(),
     provideState(featureKey, jokesReducer),
     provideEffects(JokesEffects),

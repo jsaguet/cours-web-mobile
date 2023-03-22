@@ -11,7 +11,7 @@
   </ng-container>
 
   <div id="liked-jokes">
-    <p>Liked jokes: ({{ viewModel.countLikedJokes }})</p>
+    <p>Liked jokes: ({{ viewModel.likedJokes | likedJokesCount }})</p>
     <app-joke *ngFor="let joke of viewModel.likedJokes" [joke]="joke"></app-joke>
   </div>
 </div>
