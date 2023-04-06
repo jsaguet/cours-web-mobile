@@ -1,5 +1,5 @@
 {
-  "liked_jokes": "Liked jokes",
+  "liked_jokes": "Liked jokes - {{nb}}",
   "next": "Next",
   "show_delivery": "Show delivery",
   "like": "Like",

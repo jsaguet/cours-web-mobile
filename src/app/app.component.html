@@ -1,5 +1,6 @@
+<p (click)="useLanguage('fr')">Français</p><p (click)="useLanguage('en')">Anglais</p>
 <ul>
-  <li><a routerLink="/">Home</a></li>
-  <li><a routerLink="/favorites">Favorites</a></li>
+    <li><a routerLink="/">{{ 'home' | translate }}</a></li>
+    <li><a routerLink="/favorites">{{ 'favorites' | translate }}</a></li>
 </ul>
-<router-outlet />
+<router-outlet/>

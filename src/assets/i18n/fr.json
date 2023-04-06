@@ -1,5 +1,5 @@
 {
-  "liked_jokes": "Blagues aimées",
+  "liked_jokes": "Blagues aimées ({{nb}})",
   "next": "Suivante",
   "show_delivery": "Afficher la chute",
   "like": "Aimer",

@@ -10,6 +10,7 @@ import {
   nextClicked,
   showDelivery,
 } from '../state/jokes.actions';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Pipe({ standalone: true, name: 'likedJokesCount' })
 export class LikedJokesCountPipe implements PipeTransform {
@@ -21,7 +22,7 @@ export class LikedJokesCountPipe implements PipeTransform {
 @Component({
   selector: 'app-page',
   standalone: true,
-  imports: [CommonModule, JokeComponent, LikedJokesCountPipe],
+  imports: [CommonModule, JokeComponent, LikedJokesCountPipe, TranslateModule],
   templateUrl: './jokes-page.component.html',
   styleUrls: ['./jokes-page.component.scss'],
 })

@@ -7,7 +7,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { provideHttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { provideState, provideStore } from '@ngrx/store';
 import { featureKey, jokesReducer } from './app/state/jokes.reducer';
 import { provideEffects } from '@ngrx/effects';
@@ -15,6 +15,8 @@ import { JokesEffects } from './app/state/jokes.effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideRouter } from '@angular/router';
 import { appRoutes } from './app/app.routes';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -34,5 +36,14 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(AngularFireAuthModule),
     importProvidersFrom(AngularFirestoreModule),
     importProvidersFrom(AngularFireStorageModule),
+    importProvidersFrom(
+      TranslateModule.forRoot({
+        loader: {
+          provide: TranslateLoader,
+          useFactory: (http: HttpClient) => new TranslateHttpLoader(http),
+          deps: [HttpClient],
+        },
+      })
+    ),
   ],
 }).catch((err) => console.error(err));

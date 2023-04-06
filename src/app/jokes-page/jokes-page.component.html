@@ -1,18 +1,18 @@
 <div *ngIf="viewModel$ | async as viewModel">
-  <ng-container *ngIf="viewModel.displayedJoke">
-    <app-joke [joke]="viewModel.displayedJoke" [showDelivery]="viewModel.showDelivery"></app-joke>
+    <ng-container *ngIf="viewModel.displayedJoke">
+        <app-joke [joke]="viewModel.displayedJoke" [showDelivery]="viewModel.showDelivery"></app-joke>
 
-    <div>
-      <button (click)="showDelivery()">Afficher la chute</button>&nbsp;
-      <button (click)="jokeLiked(viewModel.displayedJoke)" id="like">Like</button>
-      &nbsp;
-      <button (click)="nextJoke()" id="next">Next</button>
+        <div>
+            <button (click)="showDelivery()">{{ 'show_delivery' | translate }}</button>&nbsp;
+            <button (click)="jokeLiked(viewModel.displayedJoke)" id="like">{{ 'like' | translate }}</button>
+            &nbsp;
+            <button (click)="nextJoke()" id="next">{{ 'next' | translate }}</button>
+        </div>
+    </ng-container>
+
+    <div id="liked-jokes">
+        <p>{{ 'liked_jokes' | translate: {nb: viewModel.likedJokes | likedJokesCount}  }}</p>
+        <app-joke *ngFor="let joke of viewModel.likedJokes" [joke]="joke"></app-joke>
     </div>
-  </ng-container>
-
-  <div id="liked-jokes">
-    <p>Liked jokes: ({{ viewModel.likedJokes | likedJokesCount }})</p>
-    <app-joke *ngFor="let joke of viewModel.likedJokes" [joke]="joke"></app-joke>
-  </div>
 </div>
 
